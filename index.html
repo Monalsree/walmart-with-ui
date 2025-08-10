@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Walmart Sales Forecasting | AI-Powered Retail Analytics Platform</title>
+    <meta name="description" content="Advanced machine learning platform for Walmart store sales forecasting and analytics. Predict sales trends with 94.2% accuracy using AI-powered insights for data-driven retail decisions." />
+    <meta name="author" content="WalmartForecast AI" />
+    <meta name="keywords" content="walmart sales forecasting, AI retail analytics, machine learning predictions, sales trends, inventory optimization, retail intelligence, data-driven decisions" />
+    <link rel="canonical" href="https://walmartforecast.ai" />
+
+    <meta property="og:title" content="Walmart Sales Forecasting | AI-Powered Analytics" />
+    <meta property="og:description" content="Harness machine learning to predict Walmart sales trends with 94.2% accuracy. Real-time forecasting for 4,500+ stores with advanced AI analytics." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://walmartforecast.ai/hero-preview.jpg" />
+    <meta property="og:url" content="https://walmartforecast.ai" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@walmartforecast" />
+    <meta name="twitter:image" content="https://walmartforecast.ai/hero-preview.jpg" />
+    <meta name="twitter:title" content="Walmart Sales Forecasting | AI-Powered Analytics" />
+    <meta name="twitter:description" content="Advanced machine learning platform for Walmart store sales forecasting. Predict trends with 94.2% accuracy using AI-powered retail analytics." />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for Design System */
+        :root {
+            --primary: 217, 91%, 45%;
+            --primary-glow: 219, 78%, 65%;
+            --secondary: 210, 40%, 96%;
+            --accent: 142, 76%, 36%;
+            --background: 0, 0%, 100%;
+            --foreground: 222, 84%, 5%;
+            --card: 0, 0%, 100%;
+            --border: 214, 32%, 91%;
+            --muted: 210, 40%, 96%;
+            --muted-foreground: 215, 16%, 47%;
+            --destructive: 0, 84%, 60%;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+            --gradient-hero: linear-gradient(135deg, hsl(217, 91%, 45%) 0%, hsl(142, 76%, 36%) 100%);
+            --gradient-forecast: linear-gradient(135deg, hsl(142, 76%, 36%) 0%, hsl(158, 64%, 52%) 100%);
+            --gradient-analytics: linear-gradient(135deg, hsl(45, 93%, 47%) 0%, hsl(32, 95%, 44%) 100%);
+            --gradient-features: linear-gradient(135deg, hsl(271, 91%, 65%) 0%, hsl(312, 73%, 55%) 100%);
+            
+            /* Shadows */
+            --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+            --shadow-card: 0 4px 12px -2px hsl(var(--primary) / 0.1);
+            --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+        }
+
+        .dark {
+            --background: 222, 84%, 5%;
+            --foreground: 210, 40%, 98%;
+            --card: 222, 84%, 8%;
+            --border: 217, 32%, 15%;
+            --primary: 219, 78%, 65%;
+            --primary-glow: 217, 91%, 75%;
+            --secondary: 217, 32%, 15%;
+            --muted: 217, 32%, 15%;
+            --muted-foreground: 215, 20%, 65%;
+            --accent: 158, 64%, 52%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Backgrounds */
+        .bg-home {
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            animation: gradientFlow 10s ease-in-out infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-forecast {
+            background: var(--gradient-forecast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-forecast::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,149.3C384,171,480,245,576,250.7C672,256,768,192,864,165.3C960,139,1056,149,1152,144C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            animation: wave 8s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1440px; }
+        }
+
+        .bg-analytics {
+            background: var(--gradient-analytics);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-analytics::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 10px, transparent 10px, transparent 20px);
+            animation: stripes 20s linear infinite;
+        }
+
+        @keyframes stripes {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .bg-features {
+            background: var(--gradient-features);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1), transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1), transparent 50%);
+            animation: orbit 15s ease-in-out infinite;
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pulse Animation */
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Glow Effect */
+        .glow:hover {
+            box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.5);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: hsla(var(--card) / 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid hsl(var(--border));
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: hsl(var(--foreground));
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: hsl(var(--primary));
+            background: hsl(var(--primary) / 0.1);
+            transform: scale(1.05);
+        }
+
+        .nav-links a.active {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        .page.active {
+            display: block;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-elegant);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: hsl(var(--primary));
+            border: 2px solid hsl(var(--primary));
+        }
+
+        .btn-outline:hover {
+            background: hsl(var(--primary) / 0.1);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* Cards */
+        .card {
+            background: hsla(var(--card) / 0.8);
+            border: 1px solid hsl(var(--border));
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-card);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-elegant);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .card-title:hover {
+            color: hsl(45, 100%, 60%);
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .grid-6 {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid hsl(var(--border));
+            border-radius: 0.75rem;
+            background: hsl(var(--card));
+            color: hsl(var(--foreground));
+            font-family: inherit;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: hsl(var(--primary));
+            box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            color: white;
+        }
+
+        .hero .gradient-text {
+            background: linear-gradient(135deg, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Image Styles */
+        .hero-image, .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            margin: 2rem auto;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover, .content-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Stats */
+        .stats {
+            padding: 4rem 0;
+            background: hsl(var(--card));
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .stat-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--gradient-primary);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: hsl(var(--primary));
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: hsl(var(--muted-foreground));
+            font-size: 1rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 0;
+        }
+
+        .section-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .feature-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Forecast Form */
+        .forecast-form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        /* Result Display */
+        .result {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border-radius: 1rem;
+            margin-top: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .result-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Additional Features */
+        .additional-feature {
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .additional-feature:hover {
+            transform: scale(1.05);
+        }
+
+        .additional-feature-icon {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            margin-bottom: 0.75rem;
+            display: inline-flex;
+            transition: all 0.3s ease;
+        }
+
+        .additional-feature:hover .additional-feature-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Performance Stats */
+        .performance-stats {
+            text-align: center;
+        }
+
+        .performance-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .performance-value {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            background: none;
+            border: 2px solid hsl(var(--border));
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: hsl(var(--foreground));
+        }
+
+        .theme-toggle:hover {
+            border-color: hsl(var(--primary));
+            color: hsl(var(--primary));
+            transform: scale(1.1);
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: hsl(var(--foreground));
+        }
+
+        /* Chart Placeholder */
+        .chart-placeholder {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Particle Canvas */
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: hsla(var(--card) / 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                border-top: 1px solid hsl(var(--border));
+                transform: translateY(-10px);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links.show {
+                display: flex;
+                transform: translateY(0);
+                opacity: 1;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .forecast-form {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .grid-2, .grid-3, .grid-4, .grid-6 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image, .content-image {
+                max-width: 90%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .grid-6 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-6 {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,1));
+            border-radius: 0.5rem;
+            transition: width 0.3s ease;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> WalmartForecast
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
+                <li><a href="#" onclick="showPage('forecast')">Forecast</a></li>
+                <li><a href="#" onclick="showPage('analytics')">Analytics</a></li>
+                <li><a href="#" onclick="showPage('features')">Features</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button class="theme-toggle pulse" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active bg-home">
+        <canvas id="particle-canvas"></canvas>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="section-overlay"></div>
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <div class="hero-badge floating pulse">
+                        <i class="fas fa-robot"></i> AI-Powered Analytics Platform
+                    </div>
+                    
+                    <h1>
+                        Walmart Sales <br>
+                        <span class="gradient-text">Forecasting</span>
+                    </h1>
+                    
+                    <p>
+                        Unlock the power of AI to predict sales trends, optimize inventory, 
+                        and drive smarter retail decisions with 94.2% accuracy.
+                    </p>
+                    
+                    <img src="https://via.placeholder.com/600x400?text=Hero+Image" alt="Futuristic AI analytics dashboard with charts and data visualizations" class="hero-image fade-in glow">
+                    
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="#" onclick="showPage('forecast')" class="btn btn-primary pulse glow">
+                            <i class="fas fa-chart-line"></i>
+                            Start Forecasting
+                        </a>
+                        <a href="#" onclick="showPage('analytics')" class="btn btn-outline glow">
+                            <i class="fas fa-chart-bar"></i>
+                            View Analytics
+                        </a>
+                        <a href="#" onclick="showPage('features')" class="btn btn-outline glow">
+                            <i class="fas fa-star"></i>
+                            Explore Features
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;" class="fade-in">Our Impact</h2>
+                <div class="grid grid-4">
+                    <div class="stat-card floating fade-in glow" style="animation-delay: 0.1s;">
+                        <div class="stat-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="stat-value">94.2%</div>
+                        <div class="stat-label">Accuracy Rate</div>
+                    </div>
+                    <div class="stat-card floating fade-in glow" style="animation-delay: 0.2s;">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-value">1M+</div>
+                        <div class="stat-label">Predictions Generated</div>
+                    </div>
+                    <div class="stat-card floating fade-in glow" style="animation-delay: 0.3s;">
+                        <div class="stat-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="stat-value">&lt;2s</div>
+                        <div class="stat-label">Processing Time</div>
+                    </div>
+                    <div class="stat-card floating fade-in glow" style="animation-delay: 0.4s;">
+                        <div class="stat-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="stat-value">4,500+</div>
+                        <div class="stat-label">Stores Covered</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Forecast Page -->
+    <div id="forecast" class="page bg-forecast forecast-section">
+        <div class="section-overlay"></div>
+        <div class="container section-content" style="padding: 4rem 2rem;">
+            <div style="text-align: center; margin-bottom: 3rem;" class="fade-in">
+                <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: white;">Sales Forecasting</h1>
+                <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto;">
+                    Predict sales for any Walmart store and department with our advanced AI model.
+                </p>
+                <img src="https://via.placeholder.com/600x400?text=Forecast+Image" alt="Data visualization of sales trends with charts and graphs" class="hero-image fade-in glow">
+            </div>
+
+            <div class="forecast-form">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+                    <div style="width: 3rem; height: 3rem; background: var(--gradient-primary); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: white;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h2 style="font-size: 1.75rem; font-weight: 600; margin: 0; color: white;">Sales Forecast</h2>
+                </div>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">
+                    Enter store details to generate precise sales predictions.
+                </p>
+
+                <form id="forecastForm" class="fade-in">
+                    <div class="grid grid-2">
+                        <div class="form-group">
+                            <label class="form-label" style="color: white;">
+                                <i class="fas fa-store"></i> Store Number
+                            </label>
+                            <input type="number" id="store" class="form-input" placeholder="e.g., 1, 2, 3..." required style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); color: white;">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" style="color: white;">
+                                <i class="fas fa-building"></i> Department
+                            </label>
+                            <input type="number" id="dept" class="form-input" placeholder="e.g., 1, 2, 3..." required style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); color: white;">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" style="color: white;">
+                            <i class="fas fa-calendar"></i> Forecast Date
+                        </label>
+                        <input type="date" id="date" class="form-input" required style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); color: white;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" style="color: white;">Holiday Status</label>
+                        <select id="isHoliday" class="form-select" style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); color: white;">
+                            <option value="false" style="background: hsl(var(--card)); color: hsl(var(--foreground));">Regular Day</option>
+                            <option value="true" style="background: hsl(var(--card)); color: hsl(var(--foreground));">Holiday</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary pulse glow" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                        <i class="fas fa-chart-line"></i>
+                        <span id="submitText">Generate Forecast</span>
+                        <span id="loadingSpinner" class="loading" style="display: none;"></span>
+                    </button>
+                </form>
+
+                <div id="result" style="display: none;" class="result fade-in">
+                    <div style="font-size: 1.25rem; margin-bottom: 0.5rem;">Predicted Sales</div>
+                    <div id="resultValue" class="result-value">$0</div>
+                    <div style="opacity: 0.9; margin-bottom: 2rem;">
+                        For Store <span id="resultStore"></span>, Department <span id="resultDept"></span>
+                        <br>on <span id="resultDate"></span>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Confidence Score</span>
+                            <span id="confidenceScore">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="confidenceBar" class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <button onclick="resetForm()" class="btn pulse glow" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-redo"></i>
+                        New Forecast
+                    </button>
+                </div>
+            </div>
+
+            <!-- Historical Trends Placeholder -->
+            <div class="chart-placeholder fade-in" style="margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem; color: white;">Historical Sales Trends</h3>
+                <p style="color: rgba(255, 255, 255, 0.8);">[Interactive chart placeholder for historical sales data]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analytics Page -->
+    <div id="analytics" class="page bg-analytics analytics-section">
+        <div class="section-overlay"></div>
+        <div class="container section-content" style="padding: 4rem 2rem;">
+            <div style="text-align: center; margin-bottom: 3rem;" class="fade-in">
+                <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: white;">Analytics Dashboard</h1>
+                <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto;">
+                    Explore comprehensive insights and trends from Walmart sales data.
+                </p>
+                <img src="https://via.placeholder.com/600x400?text=Analytics+Dashboard" alt="Interactive analytics dashboard with sales metrics and trends" class="hero-image fade-in glow">
+            </div>
+
+            <div class="grid grid-3" style="margin-bottom: 3rem;">
+                <div class="card fade-in glow" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; color: white;">Total Revenue</h3>
+                    <div style="font-size: 2rem; font-weight: 700; color: #60f5a1; margin-bottom: 0.5rem;">$2.4B</div>
+                    <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">
+                        <i class="fas fa-arrow-up" style="color: #60f5a1;"></i> +12.5% from last quarter
+                    </div>
+                </div>
+                
+                <div class="card fade-in glow" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div class="feature-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; color: white;">Active Stores</h3>
+                    <div style="font-size: 2rem; font-weight: 700; color: #fbbf24; margin-bottom: 0.5rem;">4,743</div>
+                    <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">
+                        <i class="fas fa-arrow-up" style="color: #60f5a1;"></i> +2.1% growth
+                    </div>
+                </div>
+                
+                <div class="card fade-in glow" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; color: white;">Avg Daily Customers</h3>
+                    <div style="font-size: 2rem; font-weight: 700; color: #a78bfa; margin-bottom: 0.5rem;">234K</div>
+                    <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">
+                        <i class="fas fa-arrow-up" style="color: #60f5a1;"></i> +8.3% increase
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card fade-in glow" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <h3 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; color: white;">
+                        <i class="fas fa-chart-bar"></i>
+                        Top Performing Departments
+                    </h3>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+                            <span style="color: rgba(255, 255, 255, 0.9);">Electronics</span>
+                            <span style="font-weight: 600; color: #60f5a1;">$485M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+                            <span style="color: rgba(255, 255, 255, 0.9);">Grocery</span>
+                            <span style="font-weight: 600; color: #60f5a1;">$423M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+                            <span style="color: rgba(255, 255, 255, 0.9);">Clothing</span>
+                            <span style="font-weight: 600; color: #60f5a1;">$312M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.75rem 0;">
+                            <span style="color: rgba(255, 255, 255, 0.9);">Home & Garden</span>
+                            <span style="font-weight: 600; color: #60f5a1;">$298M</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card fade-in glow" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <h3 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; color: white;">
+                        <i class="fas fa-calendar-alt"></i>
+                        Seasonal Trends
+                    </h3>
+                    <div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="color: rgba(255, 255, 255, 0.9);">Holiday Season</span>
+                                <span style="font-weight: 600; color: white;">+45%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="color: rgba(255, 255, 255, 0.9);">Back-to-School</span>
+                                <span style="font-weight: 600; color: white;">+32%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 32%;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="color: rgba(255, 255, 255, 0.9);">Summer</span>
+                                <span style="font-weight: 600; color: white;">+18%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 18%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Visualization Section -->
+            <div class="chart-placeholder fade-in" style="margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem; color: white;">Sales Performance Chart</h3>
+                <p style="color: rgba(255, 255, 255, 0.8);">[Interactive chart placeholder for sales performance data]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Page -->
+    <div id="features" class="page bg-features features-section">
+        <div class="section-overlay"></div>
+        <div class="container section-content" style="padding: 4rem 2rem;">
+            <div style="text-align: center; margin-bottom: 3rem;" class="fade-in">
+                <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: white;">Our Features</h1>
+                <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto;">
+                    Discover the powerful capabilities of our AI-powered analytics platform.
+                </p>
+                <img src="https://via.placeholder.com/600x400?text=Features+Image" alt="AI technology illustration showcasing advanced analytics features" class="hero-image fade-in glow">
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-3" style="margin-bottom: 3rem;">
+                <div class="card fade-in glow" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div class="card-header">
+                        <div style="padding: 0.75rem; background: linear-gradient(to right, hsl(217, 91%, 45%), hsl(219, 78%, 65%)); border-radius: 0.75rem; transition: transform 0.3s ease;" class="feature-icon-container">
+                            <i class="fas fa-brain w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="badge">94.2% Accuracy</span>
+                    </div>
+                    <h3 class="card-title">Predictive Analytics</h3>
+                    <p class="card-description">Harness AI to forecast sales with unparalleled precision.</p>
+                </div>
+                <div class="card fade-in glow" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div class="card-header">
+                        <div style="padding: 0.75rem; background: linear-gradient(to right, hsl(142, 76%, 36%), hsl(158, 64%, 52%)); border-radius: 0.75rem; transition: transform 0.3s ease;" class="feature-icon-container">
+                            <i class="fas fa-tachometer-alt w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="badge">Real-Time</span>
+                    </div>
+                    <h3 class="card-title">Instant Insights</h3>
+                    <p class="card-description">Access real-time data to stay ahead of market trends.</p>
+                </div>
+                <div class="card fade-in glow" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div class="card-header">
+                        <div style="padding: 0.75rem; background: linear-gradient(to right, hsl(271, 91%, 65%), hsl(312, 73%, 55%)); border-radius: 0.75rem; transition: transform 0.3s ease;" class="feature-icon-container">
+                            <i class="fas fa-boxes w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="badge">Optimized</span>
+                    </div>
+                    <h3 class="card-title">Inventory Management</h3>
+                    <p class="card-description">Optimize stock levels with predictive analytics.</p>
+                </div>
+            </div>
+
+            <!-- Additional Features Grid -->
+            <div class="card fade-in glow" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem;">
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: white; text-align: center; margin-bottom: 2rem;">And Much More...</h3>
+                <div class="grid grid-6">
+                    <div class="additional-feature fade-in">
+                        <div class="additional-feature-icon">
+                            <i class="fas fa-cloud w-6 h-6 text-white"></i>
+                        </div>
+                        <div style="font-size: 0.875rem; font-weight: 500; color: white; margin-bottom: 0.25rem;">Cloud Integration</div>
+                        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.7);">Seamless cloud-based data access</div>
+                    </div>
+                    <div class="additional-feature fade-in">
+                        <div class="additional-feature-icon">
+                            <i class="fas fa-lock w-6 h-6 text-white"></i>
+                        </div>
+                        <div style="font-size: 0.875rem; font-weight: 500; color: white; margin-bottom: 0.25rem;">Secure Data</div>
+                        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.7);">Enterprise-grade security</div>
+                    </div>
+                    <div class="additional-feature fade-in">
+                        <div class="additional-feature-icon">
+                            <i class="fas fa-chart-pie w-6 h-6 text-white"></i>
+                        </div>
+                        <div style="font-size: 0.875rem; font-weight: 500; color: white; margin-bottom: 0.25rem;">Custom Reports</div>
+                        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.7);">Tailored analytics dashboards</div>
+                    </div>
+                    <div class="additional-feature fade-in">
+                        <div class="additional-feature-icon">
+                            <i class="fas fa-mobile-alt w-6 h-6 text-white"></i>
+                        </div>
+                        <div style="font-size: 0.875rem; font-weight: 500; color: white; margin-bottom: 0.25rem;">Mobile Access</div>
+                        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.7);">Analytics on the go</div>
+                    </div>
+                    <div class="additional-feature fade-in">
+                        <div class="additional-feature-icon">
+                            <i class="fas fa-users-cog w-6 h-6 text-white"></i>
+                        </div>
+                        <div style="font-size: 0.875rem; font-weight: 500; color: white; margin-bottom: 0.25rem;">Team Collaboration</div>
+                        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.7);">Shared insights for teams</div>
+                    </div>
+                    <div class="additional-feature fade-in">
+                        <div class="additional-feature-icon">
+                            <i class="fas fa-rocket w-6 h-6 text-white"></i>
+                        </div>
+                        <div style="font-size: 0.875rem; font-weight: 500; color: white; margin-bottom: 0.25rem;">Fast Deployment</div>
+                        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.7);">Quick setup and integration</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Stats -->
+            <div class="grid grid-4" style="margin-top: 4rem;">
+                <div class="performance-stats fade-in">
+                    <div class="performance-value" style="color: hsl(45, 100%, 60%);">99.9%</div>
+                    <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">Uptime</div>
+                </div>
+                <div class="performance-stats fade-in">
+                    <div class="performance-value" style="color: hsl(142, 76%, 36%);">4,500+</div>
+                    <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">Stores</div>
+                </div>
+                <div class="performance-stats fade-in">
+                    <div class="performance-value" style="color: hsl(217, 91%, 45%);">50+</div>
+                    <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">Countries</div>
+                </div>
+                <div class="performance-stats fade-in">
+                    <div class="performance-value" style="color: hsl(271, 91%, 65%);">1TB+</div>
+                    <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">Data Processed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const page = document.getElementById(pageId);
+            page.classList.add('active');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const navLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+            if (navLink) {
+                navLink.classList.add('active');
+            }
+
+            // Trigger fade-in animations
+            page.querySelectorAll('.fade-in').forEach(el => {
+                el.classList.remove('visible');
+                setTimeout(() => el.classList.add('visible'), 100);
+            });
+
+            // Show/hide particle canvas
+            const canvas = document.getElementById('particle-canvas');
+            canvas.style.display = pageId === 'home' ? 'block' : 'none';
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('show');
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const icon = document.querySelector('.theme-toggle i');
+            if (document.body.classList.contains('dark')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        // Mock API for Forecast (for demonstration)
+        async function mockForecastAPI(formData) {
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            const baseSales = 10000 + Math.random() * 50000;
+            const holidayMultiplier = formData.isHoliday ? 1.3 : 1;
+            const prediction = baseSales * holidayMultiplier;
+            return {
+                prediction: prediction,
+                confidence: 0.85 + Math.random() * 0.1
+            };
+        }
+
+        // Forecast Form
+        document.getElementById('forecastForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const submitText = document.getElementById('submitText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const resultDiv = document.getElementById('result');
+            
+            // Get form data
+            const formData = {
+                store: document.getElementById('store').value,
+                dept: document.getElementById('dept').value,
+                date: document.getElementById('date').value,
+                isHoliday: document.getElementById('isHoliday').value === 'true'
+            };
+            
+            // Show loading
+            submitBtn.disabled = true;
+            submitText.textContent = 'Forecasting...';
+            loadingSpinner.style.display = 'inline-block';
+            resultDiv.style.display = 'none';
+            
+            try {
+                const result = await mockForecastAPI(formData);
+                
+                // Display result
+                document.getElementById('resultValue').textContent = `$${result.prediction.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+                document.getElementById('resultStore').textContent = formData.store;
+                document.getElementById('resultDept').textContent = formData.dept;
+                document.getElementById('resultDate').textContent = new Date(formData.date).toLocaleDateString();
+                
+                // Show confidence score
+                const confidence = Math.round(result.confidence * 100);
+                document.getElementById('confidenceScore').textContent = `${confidence}%`;
+                document.getElementById('confidenceBar').style.width = `${confidence}%`;
+                
+                resultDiv.style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error generating forecast. Please try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitText.textContent = 'Generate Forecast';
+                loadingSpinner.style.display = 'none';
+            }
+        });
+
+        // Reset Form
+        function resetForm() {
+            document.getElementById('forecastForm').reset();
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('date').valueAsDate = new Date();
+        }
+
+        // Particle Animation for Home Page
+        function initParticles() {
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const particleCount = 50;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 5 + 1;
+                    this.speedX = Math.random() * 2 - 1;
+                    this.speedY = Math.random() * 2 - 1;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.size > 0.2) this.size -= 0.1;
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                }
+
+                draw() {
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                if (particles.length < particleCount) {
+                    particles.push(new Particle());
+                }
+                particles = particles.filter(p => p.size > 0.2);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animateParticles);
+            }
+
+            animateParticles();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('date').valueAsDate = new Date();
+            const floatingElements = document.querySelectorAll('.floating');
+            floatingElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Start particle animation only for home page
+            if (document.getElementById('home').classList.contains('active')) {
+                initParticles();
+            }
+
+            // Add hover effect for feature icon containers
+            document.querySelectorAll('.feature-icon-container').forEach(el => {
+                el.parentElement.addEventListener('mouseenter', () => {
+                    el.style.transform = 'scale(1.1)';
+                });
+                el.parentElement.addEventListener('mouseleave', () => {
+                    el.style.transform = 'scale(1)';
+                });
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navLinks.classList.remove('show');
+            }
+        });
+    </script>
+  </body>
+</html>
