@@ -84,8 +84,22 @@
         }
 
         /* Backgrounds */
+        .global-bg {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(1200px 800px at 20% 20%, rgba(255,255,255,0.06), transparent 60%),
+                        radial-gradient(1000px 700px at 80% 30%, rgba(255,255,255,0.05), transparent 60%),
+                        linear-gradient(135deg, hsl(217 91% 45% / 0.12), hsl(142 76% 36% / 0.12));
+            pointer-events: none;
+            z-index: 0;
+            animation: bgPulse 12s ease-in-out infinite alternate;
+        }
+        @keyframes bgPulse {
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            100% { filter: hue-rotate(20deg) brightness(1.05); }
+        }
         .bg-home {
-            background: var(--gradient-hero);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
@@ -108,7 +122,7 @@
         }
 
         .bg-forecast {
-            background: var(--gradient-forecast);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
@@ -131,7 +145,7 @@
         }
 
         .bg-analytics {
-            background: var(--gradient-analytics);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
@@ -153,7 +167,7 @@
         }
 
         .bg-features {
-            background: var(--gradient-features);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
@@ -867,6 +881,7 @@
     </style>
   </head>
   <body>
+    <div class="global-bg" aria-hidden="true"></div>
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
@@ -903,8 +918,8 @@
                     </div>
                     
                     <h1>
-                        Walmart Sales <br>
-                        <span class="gradient-text">Forecasting</span>
+                        Walmart Retail <br>
+                        <span class="gradient-text">Intelligence</span>
                     </h1>
                     
                     <p>
@@ -912,7 +927,7 @@
                         and drive smarter retail decisions with 94.2% accuracy.
                     </p>
                     
-                    <img src="https://via.placeholder.com/600x400?text=Hero+Image" alt="Futuristic AI analytics dashboard with charts and data visualizations" class="hero-image fade-in glow">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop" alt="Futuristic analytics dashboard with charts and data" class="hero-image fade-in glow">
                     
                     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                         <a href="#" onclick="showPage('forecast')" class="btn btn-primary pulse glow">
@@ -985,11 +1000,11 @@
         <div class="section-overlay"></div>
         <div class="container section-content" style="padding: 4rem 2rem;">
             <div style="text-align: center; margin-bottom: 3rem;" class="fade-in">
-                <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: white;">Sales Forecasting</h1>
+                <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: white;">AI Forecasting Engine</h1>
                 <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto;">
                     Predict sales for any Walmart store and department with our advanced AI model.
                 </p>
-                <img src="https://via.placeholder.com/600x400?text=Forecast+Image" alt="Data visualization of sales trends with charts and graphs" class="hero-image fade-in glow">
+                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1600&auto=format&fit=crop" alt="Sales trends visualization charts and graphs" class="hero-image fade-in glow">
             </div>
 
             <div class="forecast-form">
@@ -1094,7 +1109,7 @@
                 <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto;">
                     Explore comprehensive insights and trends from Walmart sales data.
                 </p>
-                <img src="https://via.placeholder.com/600x400?text=Analytics+Dashboard" alt="Interactive analytics dashboard with sales metrics and trends" class="hero-image fade-in glow">
+                <img src="https://images.unsplash.com/photo-1551288049-7a59ee9a8a2a?q=80&w=1600&auto=format&fit=crop" alt="Interactive analytics dashboard with metrics and trends" class="hero-image fade-in glow">
             </div>
 
             <div class="grid grid-3" style="margin-bottom: 3rem;">
@@ -1224,7 +1239,7 @@
                 <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto;">
                     Discover the powerful capabilities of our AI-powered analytics platform.
                 </p>
-                <img src="https://via.placeholder.com/600x400?text=Features+Image" alt="AI technology illustration showcasing advanced analytics features" class="hero-image fade-in glow">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop" alt="AI technology and code interface" class="hero-image fade-in glow">
             </div>
 
             <!-- Features Grid -->
@@ -1376,6 +1391,9 @@
             // Show/hide particle canvas
             const canvas = document.getElementById('particle-canvas');
             canvas.style.display = pageId === 'home' ? 'block' : 'none';
+            // Ensure global background stays behind content
+            const bg = document.querySelector('.global-bg');
+            if (bg) bg.style.display = 'block';
         }
 
         // Mobile Menu Toggle
