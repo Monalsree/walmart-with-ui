@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Walmart Sales Forecasting | AI-Powered Retail Analytics Platform</title>
+    <title>WalmartForecast AI | Sales Forecasting & Retail Analytics</title>
     <meta name="description" content="Advanced machine learning platform for Walmart store sales forecasting and analytics. Predict sales trends with 94.2% accuracy using AI-powered insights for data-driven retail decisions." />
     <meta name="author" content="WalmartForecast AI" />
     <meta name="keywords" content="walmart sales forecasting, AI retail analytics, machine learning predictions, sales trends, inventory optimization, retail intelligence, data-driven decisions" />
     <link rel="canonical" href="https://walmartforecast.ai" />
 
-    <meta property="og:title" content="Walmart Sales Forecasting | AI-Powered Analytics" />
+    <meta property="og:title" content="WalmartForecast AI | Sales Forecasting & Retail Analytics" />
     <meta property="og:description" content="Harness machine learning to predict Walmart sales trends with 94.2% accuracy. Real-time forecasting for 4,500+ stores with advanced AI analytics." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://walmartforecast.ai/hero-preview.jpg" />
@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@walmartforecast" />
     <meta name="twitter:image" content="https://walmartforecast.ai/hero-preview.jpg" />
-    <meta name="twitter:title" content="Walmart Sales Forecasting | AI-Powered Analytics" />
+    <meta name="twitter:title" content="WalmartForecast AI | Sales Forecasting & Retail Analytics" />
     <meta name="twitter:description" content="Advanced machine learning platform for Walmart store sales forecasting. Predict trends with 94.2% accuracy using AI-powered retail analytics." />
 
     <!-- Google Fonts -->
@@ -84,8 +84,22 @@
         }
 
         /* Backgrounds */
+        .global-bg {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(1200px 800px at 20% 20%, rgba(255,255,255,0.06), transparent 60%),
+                        radial-gradient(1000px 700px at 80% 30%, rgba(255,255,255,0.05), transparent 60%),
+                        linear-gradient(135deg, hsl(217 91% 45% / 0.12), hsl(142 76% 36% / 0.12));
+            pointer-events: none;
+            z-index: 0;
+            animation: bgPulse 12s ease-in-out infinite alternate;
+        }
+        @keyframes bgPulse {
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            100% { filter: hue-rotate(20deg) brightness(1.05); }
+        }
         .bg-home {
-            background: var(--gradient-hero);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
@@ -108,7 +122,7 @@
         }
 
         .bg-forecast {
-            background: var(--gradient-forecast);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
@@ -131,7 +145,7 @@
         }
 
         .bg-analytics {
-            background: var(--gradient-analytics);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
@@ -153,7 +167,7 @@
         }
 
         .bg-features {
-            background: var(--gradient-features);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
@@ -486,7 +500,7 @@
         /* Stats */
         .stats {
             padding: 4rem 0;
-            background: hsl(var(--card));
+            background: transparent;
         }
 
         .stat-card {
@@ -795,9 +809,79 @@
             border-radius: 0.5rem;
             transition: width 0.3s ease;
         }
+        
+        /* Added: Image gallery cards */
+        .image-gallery {
+            padding: 2rem 0 3rem;
+        }
+        .image-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .image-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            cursor: zoom-in;
+        }
+        .image-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        /* Added: Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+            z-index: 2000;
+        }
+        .lightbox.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 86vh;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-glow);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        /* Added: Tilt and parallax helpers */
+        .tilt {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .parallax {
+            will-change: transform;
+        }
     </style>
   </head>
   <body>
+    <div class="global-bg" aria-hidden="true"></div>
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
@@ -834,8 +918,8 @@
                     </div>
                     
                     <h1>
-                        Walmart Sales <br>
-                        <span class="gradient-text">Forecasting</span>
+                        Walmart Retail <br>
+                        <span class="gradient-text">Intelligence</span>
                     </h1>
                     
                     <p>
@@ -843,7 +927,7 @@
                         and drive smarter retail decisions with 94.2% accuracy.
                     </p>
                     
-                    <img src="https://via.placeholder.com/600x400?text=Hero+Image" alt="Futuristic AI analytics dashboard with charts and data visualizations" class="hero-image fade-in glow">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop" alt="Futuristic analytics dashboard with charts and data" class="hero-image fade-in glow">
                     
                     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                         <a href="#" onclick="showPage('forecast')" class="btn btn-primary pulse glow">
@@ -899,6 +983,16 @@
                 </div>
             </div>
         </section>
+
+        <!-- Added: Home image gallery (charts) -->
+        <div class="container image-gallery fade-in">
+            <div class="grid grid-4">
+                <div class="image-card tilt"><img src="avg_sales_store.png" alt="Average sales by store" data-lightbox></div>
+                <div class="image-card tilt"><img src="avg_sales_dept.png" alt="Average sales by department" data-lightbox></div>
+                <div class="image-card tilt"><img src="monthly_sales_every_year.png" alt="Monthly sales every year" data-lightbox></div>
+                <div class="image-card tilt"><img src="holiday_distribution.png" alt="Holiday distribution" data-lightbox></div>
+            </div>
+        </div>
     </div>
 
     <!-- Forecast Page -->
@@ -906,11 +1000,11 @@
         <div class="section-overlay"></div>
         <div class="container section-content" style="padding: 4rem 2rem;">
             <div style="text-align: center; margin-bottom: 3rem;" class="fade-in">
-                <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: white;">Sales Forecasting</h1>
+                <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: white;">AI Forecasting Engine</h1>
                 <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto;">
                     Predict sales for any Walmart store and department with our advanced AI model.
                 </p>
-                <img src="https://via.placeholder.com/600x400?text=Forecast+Image" alt="Data visualization of sales trends with charts and graphs" class="hero-image fade-in glow">
+                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1600&auto=format&fit=crop" alt="Sales trends visualization charts and graphs" class="hero-image fade-in glow">
             </div>
 
             <div class="forecast-form">
@@ -991,6 +1085,18 @@
                 <h3 style="margin-bottom: 1rem; color: white;">Historical Sales Trends</h3>
                 <p style="color: rgba(255, 255, 255, 0.8);">[Interactive chart placeholder for historical sales data]</p>
             </div>
+
+            <!-- Added: Forecast model prediction images -->
+            <div class="container image-gallery fade-in" style="padding-bottom: 2rem;">
+                <div class="grid grid-3">
+                    <div class="image-card tilt"><img src="rf_real_pred.png" alt="Random Forest predictions vs actuals" data-lightbox></div>
+                    <div class="image-card tilt"><img src="xgb_real_pred.png" alt="XGBoost predictions vs actuals" data-lightbox></div>
+                    <div class="image-card tilt"><img src="dnn_real_pred.png" alt="DNN predictions vs actuals" data-lightbox></div>
+                    <div class="image-card tilt"><img src="lr_real_pred.png" alt="Linear Regression predictions vs actuals" data-lightbox></div>
+                    <div class="image-card tilt"><img src="knn_real_pred.png" alt="KNN predictions vs actuals" data-lightbox></div>
+                    <div class="image-card tilt"><img src="compared_models.png" alt="Compared model metrics" data-lightbox></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1003,7 +1109,7 @@
                 <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto;">
                     Explore comprehensive insights and trends from Walmart sales data.
                 </p>
-                <img src="https://via.placeholder.com/600x400?text=Analytics+Dashboard" alt="Interactive analytics dashboard with sales metrics and trends" class="hero-image fade-in glow">
+                <img src="https://images.unsplash.com/photo-1551288049-7a59ee9a8a2a?q=80&w=1600&auto=format&fit=crop" alt="Interactive analytics dashboard with metrics and trends" class="hero-image fade-in glow">
             </div>
 
             <div class="grid grid-3" style="margin-bottom: 3rem;">
@@ -1109,6 +1215,18 @@
                 <h3 style="margin-bottom: 1rem; color: white;">Sales Performance Chart</h3>
                 <p style="color: rgba(255, 255, 255, 0.8);">[Interactive chart placeholder for sales performance data]</p>
             </div>
+
+            <!-- Added: Analytics visualizations -->
+            <div class="container image-gallery fade-in">
+                <div class="grid grid-3">
+                    <div class="image-card tilt"><img src="correlation_matrix.png" alt="Correlation matrix of features" data-lightbox></div>
+                    <div class="image-card tilt"><img src="seasonal_decompose.png" alt="Seasonal decomposition of sales" data-lightbox></div>
+                    <div class="image-card tilt"><img src="avg_monthly_sales.png" alt="Average monthly sales" data-lightbox></div>
+                    <div class="image-card tilt"><img src="effect_of_temp.png" alt="Effect of temperature on sales" data-lightbox></div>
+                    <div class="image-card tilt"><img src="negative_weekly_sales.png" alt="Negative weekly sales distribution" data-lightbox></div>
+                    <div class="image-card tilt"><img src="monthly_sales_every_year.png" alt="Monthly sales across years" data-lightbox></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1121,7 +1239,7 @@
                 <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto;">
                     Discover the powerful capabilities of our AI-powered analytics platform.
                 </p>
-                <img src="https://via.placeholder.com/600x400?text=Features+Image" alt="AI technology illustration showcasing advanced analytics features" class="hero-image fade-in glow">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop" alt="AI technology and code interface" class="hero-image fade-in glow">
             </div>
 
             <!-- Features Grid -->
@@ -1226,10 +1344,23 @@
                     <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">Data Processed</div>
                 </div>
             </div>
+             <!-- Added: Technical visuals gallery -->
+             <div class="container image-gallery fade-in" style="margin-top: 2rem;">
+                 <div class="grid grid-3">
+                     <div class="image-card tilt"><img src="dnn_loss.png" alt="DNN training loss curve" data-lightbox></div>
+                     <div class="image-card tilt"><img src="dnn_real_pred.png" alt="DNN prediction scatter" data-lightbox></div>
+                     <div class="image-card tilt"><img src="compared_models.png" alt="Model comparison chart" data-lightbox></div>
+                 </div>
+             </div>
         </div>
     </div>
 
-    <script>
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <img id="lightbox-img" alt="Expanded visualization" />
+        <button id="lightbox-close" class="lightbox-close" aria-label="Close">&times;</button>
+    </div>
+
+     <script>
         // Page Navigation
         function showPage(pageId) {
             // Hide all pages
@@ -1260,6 +1391,9 @@
             // Show/hide particle canvas
             const canvas = document.getElementById('particle-canvas');
             canvas.style.display = pageId === 'home' ? 'block' : 'none';
+            // Ensure global background stays behind content
+            const bg = document.querySelector('.global-bg');
+            if (bg) bg.style.display = 'block';
         }
 
         // Mobile Menu Toggle
@@ -1448,6 +1582,65 @@
                 navLinks.classList.remove('show');
             }
         });
+
+        // Added: Lightbox, tilt, and parallax effects
+        (function(){
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+
+            function openLightbox(src, alt) {
+                lightboxImg.src = src;
+                lightboxImg.alt = alt || '';
+                lightbox.classList.add('show');
+                lightbox.setAttribute('aria-hidden', 'false');
+            }
+            function closeLightbox() {
+                lightbox.classList.remove('show');
+                lightbox.setAttribute('aria-hidden', 'true');
+                setTimeout(() => { lightboxImg.src = ''; }, 200);
+            }
+
+            document.addEventListener('click', (e) => {
+                const target = e.target;
+                if (target && target.matches('img[data-lightbox]')) {
+                    openLightbox(target.src, target.alt);
+                }
+                if (target === lightbox || target === lightboxClose) {
+                    closeLightbox();
+                }
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('show')) closeLightbox();
+            });
+
+            // Tilt effect
+            const tiltNodes = document.querySelectorAll('.tilt');
+            tiltNodes.forEach((node) => {
+                const strength = 10;
+                node.addEventListener('mousemove', (ev) => {
+                    const rect = node.getBoundingClientRect();
+                    const px = (ev.clientX - rect.left) / rect.width;
+                    const py = (ev.clientY - rect.top) / rect.height;
+                    const rx = (py - 0.5) * -strength;
+                    const ry = (px - 0.5) * strength;
+                    node.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+                });
+                node.addEventListener('mouseleave', () => {
+                    node.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                });
+            });
+
+            // Parallax on hero images and overlays
+            const parallaxTargets = document.querySelectorAll('.hero-image, .section-overlay');
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY || window.pageYOffset;
+                parallaxTargets.forEach((el) => {
+                    const speed = el.classList.contains('section-overlay') ? 0.15 : 0.2;
+                    el.style.transform = `translateY(${scrollY * speed}px)`;
+                });
+            });
+        })();
     </script>
   </body>
 </html>
