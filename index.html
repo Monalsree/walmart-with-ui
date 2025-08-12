@@ -795,6 +795,75 @@
             border-radius: 0.5rem;
             transition: width 0.3s ease;
         }
+        
+        /* Added: Image gallery cards */
+        .image-gallery {
+            padding: 2rem 0 3rem;
+        }
+        .image-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .image-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            cursor: zoom-in;
+        }
+        .image-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        /* Added: Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+            z-index: 2000;
+        }
+        .lightbox.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 86vh;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-glow);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        /* Added: Tilt and parallax helpers */
+        .tilt {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .parallax {
+            will-change: transform;
+        }
     </style>
   </head>
   <body>
@@ -899,6 +968,16 @@
                 </div>
             </div>
         </section>
+
+        <!-- Added: Home image gallery (charts) -->
+        <div class="container image-gallery fade-in">
+            <div class="grid grid-4">
+                <div class="image-card tilt"><img src="avg_sales_store.png" alt="Average sales by store" data-lightbox></div>
+                <div class="image-card tilt"><img src="avg_sales_dept.png" alt="Average sales by department" data-lightbox></div>
+                <div class="image-card tilt"><img src="monthly_sales_every_year.png" alt="Monthly sales every year" data-lightbox></div>
+                <div class="image-card tilt"><img src="holiday_distribution.png" alt="Holiday distribution" data-lightbox></div>
+            </div>
+        </div>
     </div>
 
     <!-- Forecast Page -->
@@ -990,6 +1069,18 @@
             <div class="chart-placeholder fade-in" style="margin-top: 3rem;">
                 <h3 style="margin-bottom: 1rem; color: white;">Historical Sales Trends</h3>
                 <p style="color: rgba(255, 255, 255, 0.8);">[Interactive chart placeholder for historical sales data]</p>
+            </div>
+
+            <!-- Added: Forecast model prediction images -->
+            <div class="container image-gallery fade-in" style="padding-bottom: 2rem;">
+                <div class="grid grid-3">
+                    <div class="image-card tilt"><img src="rf_real_pred.png" alt="Random Forest predictions vs actuals" data-lightbox></div>
+                    <div class="image-card tilt"><img src="xgb_real_pred.png" alt="XGBoost predictions vs actuals" data-lightbox></div>
+                    <div class="image-card tilt"><img src="dnn_real_pred.png" alt="DNN predictions vs actuals" data-lightbox></div>
+                    <div class="image-card tilt"><img src="lr_real_pred.png" alt="Linear Regression predictions vs actuals" data-lightbox></div>
+                    <div class="image-card tilt"><img src="knn_real_pred.png" alt="KNN predictions vs actuals" data-lightbox></div>
+                    <div class="image-card tilt"><img src="compared_models.png" alt="Compared model metrics" data-lightbox></div>
+                </div>
             </div>
         </div>
     </div>
@@ -1109,6 +1200,18 @@
                 <h3 style="margin-bottom: 1rem; color: white;">Sales Performance Chart</h3>
                 <p style="color: rgba(255, 255, 255, 0.8);">[Interactive chart placeholder for sales performance data]</p>
             </div>
+
+            <!-- Added: Analytics visualizations -->
+            <div class="container image-gallery fade-in">
+                <div class="grid grid-3">
+                    <div class="image-card tilt"><img src="correlation_matrix.png" alt="Correlation matrix of features" data-lightbox></div>
+                    <div class="image-card tilt"><img src="seasonal_decompose.png" alt="Seasonal decomposition of sales" data-lightbox></div>
+                    <div class="image-card tilt"><img src="avg_monthly_sales.png" alt="Average monthly sales" data-lightbox></div>
+                    <div class="image-card tilt"><img src="effect_of_temp.png" alt="Effect of temperature on sales" data-lightbox></div>
+                    <div class="image-card tilt"><img src="negative_weekly_sales.png" alt="Negative weekly sales distribution" data-lightbox></div>
+                    <div class="image-card tilt"><img src="monthly_sales_every_year.png" alt="Monthly sales across years" data-lightbox></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1226,10 +1329,23 @@
                     <div style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">Data Processed</div>
                 </div>
             </div>
+             <!-- Added: Technical visuals gallery -->
+             <div class="container image-gallery fade-in" style="margin-top: 2rem;">
+                 <div class="grid grid-3">
+                     <div class="image-card tilt"><img src="dnn_loss.png" alt="DNN training loss curve" data-lightbox></div>
+                     <div class="image-card tilt"><img src="dnn_real_pred.png" alt="DNN prediction scatter" data-lightbox></div>
+                     <div class="image-card tilt"><img src="compared_models.png" alt="Model comparison chart" data-lightbox></div>
+                 </div>
+             </div>
         </div>
     </div>
 
-    <script>
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <img id="lightbox-img" alt="Expanded visualization" />
+        <button id="lightbox-close" class="lightbox-close" aria-label="Close">&times;</button>
+    </div>
+
+     <script>
         // Page Navigation
         function showPage(pageId) {
             // Hide all pages
@@ -1448,6 +1564,65 @@
                 navLinks.classList.remove('show');
             }
         });
+
+        // Added: Lightbox, tilt, and parallax effects
+        (function(){
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+
+            function openLightbox(src, alt) {
+                lightboxImg.src = src;
+                lightboxImg.alt = alt || '';
+                lightbox.classList.add('show');
+                lightbox.setAttribute('aria-hidden', 'false');
+            }
+            function closeLightbox() {
+                lightbox.classList.remove('show');
+                lightbox.setAttribute('aria-hidden', 'true');
+                setTimeout(() => { lightboxImg.src = ''; }, 200);
+            }
+
+            document.addEventListener('click', (e) => {
+                const target = e.target;
+                if (target && target.matches('img[data-lightbox]')) {
+                    openLightbox(target.src, target.alt);
+                }
+                if (target === lightbox || target === lightboxClose) {
+                    closeLightbox();
+                }
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('show')) closeLightbox();
+            });
+
+            // Tilt effect
+            const tiltNodes = document.querySelectorAll('.tilt');
+            tiltNodes.forEach((node) => {
+                const strength = 10;
+                node.addEventListener('mousemove', (ev) => {
+                    const rect = node.getBoundingClientRect();
+                    const px = (ev.clientX - rect.left) / rect.width;
+                    const py = (ev.clientY - rect.top) / rect.height;
+                    const rx = (py - 0.5) * -strength;
+                    const ry = (px - 0.5) * strength;
+                    node.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+                });
+                node.addEventListener('mouseleave', () => {
+                    node.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                });
+            });
+
+            // Parallax on hero images and overlays
+            const parallaxTargets = document.querySelectorAll('.hero-image, .section-overlay');
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY || window.pageYOffset;
+                parallaxTargets.forEach((el) => {
+                    const speed = el.classList.contains('section-overlay') ? 0.15 : 0.2;
+                    el.style.transform = `translateY(${scrollY * speed}px)`;
+                });
+            });
+        })();
     </script>
   </body>
 </html>
